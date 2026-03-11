@@ -1,0 +1,23 @@
+# Secrets — CRITICAL
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Data
+data/uploads/*
+!data/uploads/.gitkeep
+
+# Node (Phase 3)
+node_modules/
+.next/
+
+# OS
+.DS_Store
+Thumbs.db

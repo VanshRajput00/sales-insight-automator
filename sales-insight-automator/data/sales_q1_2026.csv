@@ -1,0 +1,11 @@
+Date,TransactionID,ProductID,Category,UnitsSold,UnitPrice,TotalRevenue,Region,SalesRep
+2026-01-15,TRX-1001,PROD-A,Electronics,12,199.99,2399.88,North,Sarah Jenkins
+2026-01-18,TRX-1002,PROD-B,Office Supplies,50,9.50,475.00,South,Michael Chang
+2026-01-22,TRX-1003,PROD-C,Furniture,4,450.00,1800.00,East,David Smith
+2026-02-05,TRX-1004,PROD-A,Electronics,8,199.99,1599.92,West,Emily Davis
+2026-02-12,TRX-1005,PROD-D,Software,25,49.99,1249.75,North,Sarah Jenkins
+2026-02-28,TRX-1006,PROD-C,Furniture,2,450.00,900.00,South,Michael Chang
+2026-03-10,TRX-1007,PROD-B,Office Supplies,100,9.50,950.00,East,David Smith
+2026-03-15,TRX-1008,PROD-A,Electronics,15,199.99,2999.85,West,Emily Davis
+2026-03-22,TRX-1009,PROD-D,Software,40,49.99,1999.60,North,Sarah Jenkins
+2026-03-30,TRX-1010,PROD-A,Electronics,5,199.99,999.95,South,Michael Chang

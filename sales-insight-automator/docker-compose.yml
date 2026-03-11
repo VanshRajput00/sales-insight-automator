@@ -1,0 +1,37 @@
+services:
+  sia-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sia-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+
+  sia-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sia-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      sia-backend:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000"]
+      interval: 15s
+      timeout: 5s
+      retries: 3

@@ -1,0 +1,47 @@
+# Lead Engineer Note: This CI pipeline runs on every push and PR.
+# It ensures the Docker build never breaks and the API passes a smoke test
+# before any code reaches the main branch. This is the safety net.
+
+name: Backend CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint with ruff
+        working-directory: ./backend
+        run: |
+          pip install ruff
+          ruff check .
+
+      - name: Start API & smoke test
+        working-directory: ./backend
+        run: |
+          uvicorn main:app --host 0.0.0.0 --port 8000 &
+          sleep 3
+          curl -f http://localhost:8000/api/v1/health || exit 1
+          echo "✅ Health check passed"
+
+      - name: Build Docker image
+        run: docker build -t sia-backend:ci ./backend
