@@ -19,13 +19,13 @@ jobs:
           cache: 'pip'
       - name: Install dependencies
         run: |
-          cd backend
+          cd api
           python -m pip install --upgrade pip
           pip install ruff pytest
           pip install -r requirements.txt
       - name: Lint with Ruff
         run: |
-          cd backend
+          cd api
           ruff check .
 
   frontend-ci:
@@ -59,6 +59,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build Backend Image
-        run: docker build -t sia-backend:test ./backend
+        run: docker build -t sia-backend:test ./api
       - name: Build Frontend Image
         run: docker build -t sia-frontend:test ./frontend

@@ -1,7 +1,7 @@
 services:
   sia-backend:
     build:
-      context: ./backend
+      context: ./api
       dockerfile: Dockerfile
     container_name: sia-backend
     ports:

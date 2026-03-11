@@ -53,7 +53,7 @@ The project consists of three main orchestrated components:
 
 ```text
 sales-insight-automator/
-├── backend/          # FastAPI application (processor, router, services)
+├── api/              # FastAPI application (processor, router, services)
 ├── frontend/         # Next.js React Application
 ├── data/             # CSV sample data
 ├── .github/          # CI/CD Workflows
